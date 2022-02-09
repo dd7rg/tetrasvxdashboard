@@ -35,7 +35,7 @@ include "version.php";
 .green
 {
   background-color: #4CAF50;
-  border: none;
+  border: outset;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -48,7 +48,7 @@ include "version.php";
 .blue
 {
   background-color: blue;
-  border: none;
+  border: outset;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -61,7 +61,7 @@ include "version.php";
 .red
 {
   background-color: red;
-  border: none;
+  border: outset;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -170,6 +170,7 @@ include "version.php";
       ?>
     </div>
   </div>
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-6">
@@ -180,39 +181,14 @@ include "version.php";
       </div>
     </div>
   </div>
-   <div class="container-fluid">
-    <div class="row">
-      <div class="col-6">
+<br>
         <?php include "include/tgstatus.php"; ?>
-      </div>
-     <div class="col-6">
         <?php include "include/lastheard.php"; ?>
-      </div>
-    </div>
-  </div>
 
 
  <?php
-        if(array_key_exists('button1', $_POST)) {
-            button1();
-        }
-        if(array_key_exists('button2', $_POST)) {
-            button2();
-        }
-	 if(array_key_exists('button3', $_POST)) {
-            button3();
-        }
-	 if(array_key_exists('button4', $_POST)) {
-            button4();
-        }
-	 if(array_key_exists('button5', $_POST)) {
-            button5();
-        }
-	 if(array_key_exists('button6', $_POST)) {
-            button6();
-        }
-	 if(array_key_exists('button7', $_POST)) {
-            button7();
+	 if(array_key_exists('action', $_POST)) {
+            reflectorbutton($_POST['action']);
         }
 	 if(array_key_exists('button8', $_POST)) {
             button8();
@@ -230,38 +206,9 @@ include "version.php";
             button12();
         }
 	
-        function button1() {
-            $exec= "echo '" . KEY1[1] . "' > /tmp/svxlink_dtmf";
-            exec($exec,$output);
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-        function button2() {
-	    $exec= "echo '" . KEY2[1] . "' > /tmp/svxlink_dtmf";
-            exec($exec,$output);
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-	function button3() {
-	    $exec= "echo '" . KEY3[1] . "' > /tmp/svxlink_dtmf";        
-            exec($exec,$output);
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-	function button4() {
-        $exec= "echo '" . KEY4[1] . "' > /tmp/svxlink_dtmf";
-            exec($exec,$output);
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-	function button5() {
-	$exec= "echo '" . KEY5[1] . "' > /tmp/svxlink_dtmf";
-            exec($exec,$output);
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-	function button6() {
-	    $exec= "echo '" . KEY6[1] . "' > /tmp/svxlink_dtmf";
-            exec($exec,$output);
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-	function button7() {
-  	    $exec= "echo '" . KEY7[1] . "' > /tmp/svxlink_dtmf";
+	function reflectorbutton($dtmf_val) {
+		console_log($dtmf_val);
+  	    $exec= "echo '" . $dtmf_val . "' > /tmp/svxlink_dtmf";
             exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
@@ -281,12 +228,12 @@ include "version.php";
             echo "<meta http-equiv='refresh' content='0'>";
         }
 	function button11() {
-        $exec= "sudo service svxlink stop";
+        $exec= "sudo systemctl stop svxlink.service";
             exec($exec,$output);
 	echo "REPEATER STOPPED !!!";
         }
 	function button12() {
-        $exec= "sudo service svxlink start";
+        $exec= "sudo systemctl start svxlink.service";
             exec($exec,$output);
         header("Refresh:0");
         echo "REPEATER STARTED !!!";
@@ -299,20 +246,6 @@ include "version.php";
     <br>
     <form method="post">
 	<center>
-        <input type="submit" name="button1"
-                class=<?php echo KEY1[2] ?> value=<?php echo KEY1[0] ?> />
-        <input type="submit" name="button2"
-		class=<?php echo KEY2[2] ?> value=<?php echo KEY2[0] ?> />
-        <input type="submit" name="button3"
-		class=<?php echo KEY3[2] ?> value=<?php echo KEY3[0] ?> />
-	<input type="submit" name="button4"
-		class=<?php echo KEY4[2] ?> value=<?php echo KEY4[0] ?> />
-	<input type="submit" name="button5"
-		class=<?php echo KEY5[2] ?> value=<?php echo KEY5[0] ?> />
-        <input type="submit" name="button6"
-		class=<?php echo KEY6[2] ?> value=<?php echo KEY6[0] ?> />
-	<input type="submit" name="button7"
-		class=<?php echo KEY7[2] ?> value=<?php echo KEY7[0] ?> />
 	<input type="submit" name="button8"
 		class=<?php echo KEY8[2] ?> value=<?php echo KEY8[0] ?> />
 	<input type="submit" name="button9"
@@ -323,7 +256,7 @@ include "version.php";
         <input type="submit" name="button11"
                 class="red" value="REPE STOP" />
 	<input type="submit" name="button12"
-                class="red" value="REPE START" /><?php $boot = getBoot($loglines) ; $bootParts = explode(" ", $boot); echo " Last time started: " . $bootParts[0] . " " . $bootParts[1];?><br>
+                class="green" value="REPE START" /><?php $boot = getBoot($loglines) ; $bootParts = explode(" ", $boot); echo " Last time started: " . $bootParts[0] . " " . $bootParts[1];?><br>
 
 	</center>
     </form>
@@ -362,7 +295,7 @@ include "version.php";
           ?>
         </span>
         <span class="float:right;">
-          <strong>Made with love by EA2CQ based on KC1AWV's SVXLink Dashboard</strong>
+          <strong>Made with love by DD7RG for MulitReflector use, based on EA2CQ based on KC1AWV's SVXLink Dashboard</strong>
         </span>
       </div>
     </span>

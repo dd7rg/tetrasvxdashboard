@@ -1,6 +1,6 @@
 <?php
-date_default_timezone_set('Europe/Madrid');
-define("CONTACTEMAIL", "mymail@mydomain.es");
+date_default_timezone_set('Europe/Berlin');
+define("CONTACTEMAIL", "dd7rg@murgs.org");
 define("SVXLOGPATH", "/var/log");
 define("SVXLOGPREFIX", "svxlink");
 define("SVXCONFPATH", "/etc/svxlink/");
@@ -8,7 +8,8 @@ define("SVXCONFFILENAME", "svxlink.conf");
 define("SVXLINKPATH", "/usr/bin/");
 define("SVXLOGICSECTION", "TetraLogic");
 define("SVXMODULES", array('Parrot', 'MetarInfo'));
-define("TIMEZONE", "Europe/Madrid");
+define("SVXREFLECTORS", array("ReflectorLogicFLW", "ReflectorLogicOE9XFP", "ReflectorLogicBH", "ReflectorLogicBM262"));
+define("TIMEZONE", "Europe/Berlin");
 define("REFRESHAFTER", "10");
 define("SHOWPROGRESSBARS", "on");
 define("SHOWOLDMHEARD", "60");
@@ -16,15 +17,45 @@ define("TEMPERATUREALERT", "on");
 define("TEMPERATUREHIGHLEVEL", "85");
 define("SHOWQRZ", "on");
 // Available colours for  keys background:  black, blue, red, magenta, green, cyan, yellow (Powered by ZX Spectrum palette)
-define("KEY1", array('TG214','91214#','blue'));
-define("KEY2", array('TG21433','9121433#','blue'));
-define("KEY3", array('TG21482','9121482#','blue'));
-define("KEY4", array('TG21401','9121401#','blue'));
-define("KEY5", array('TG204','91204#','blue'));
-define("KEY6", array('TG208','91208#','blue'));
-define("KEY7", array('TG262','91262#','blue'));
 define("KEY8", array('METAR','D61010#','green'));
 define("KEY9", array('PARROT ON','D61004#','green'));
-define("KEY10", array('PARROT OFF','D61005#','green'));
+define("KEY10", array('PARROT OFF','D61005#','red'));
 define("DASHCONFIG", "/var/www/html/config/config.php");
+
+$reflector_config= array(
+	"REF1" => array("config_name" => "ReflectorLogicFLW",
+			"display_name" => "Tetra DL Reflector Leipzig (DL1FLW)",
+			"link_name"    => "LinkToDL1FLW", 
+			"link_is_active" => "0",
+			"is_connected"   => "0",
+			"activate_key"  => "9",
+			"tg_choices"   => array(9,91,262,264,505,2329,3100)),
+
+	"REF2" => array("config_name" => "ReflectorLogicOE9XFP",
+			"display_name" => "Tetra OE9 Reflector OE9XFP",
+			"link_name"   => "LinkToOE9XFP",
+			"link_is_active" => "0",
+			"is_connected"   => "0",
+			"activate_key"  => "6",
+			"tg_choices"   => array(2329, 23229)),
+
+
+	"REF3" => array("config_name" => "ReflectorLogicBH",
+			"display_name" => "Tetra Test Reflector DL1BH",
+			"link_name"   => "LinkToDL1BH",
+			"link_is_active" => "0",
+			"is_connected"   => "0",
+			"activate_key"  => "8",
+			"tg_choices"   => array(8,9,264,4036)),
+
+	"REF4" => array("config_name" => "ReflectorLogicBM262",
+			"display_name" => "Tetra Brandmeister Reflector BM262",
+			"link_name"   => "LinkToBM262",
+			"link_is_active" => "0",
+			"is_connected"   => "0",
+			"activate_key"  => "99",
+			"tg_choices"   => array(73,75,263))
+		);
+
+
 ?>
