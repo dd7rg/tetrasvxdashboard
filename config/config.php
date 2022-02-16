@@ -8,9 +8,9 @@ define("SVXCONFFILENAME", "svxlink.conf");
 define("SVXLINKPATH", "/usr/bin/");
 define("SVXLOGICSECTION", "TetraLogic");
 define("SVXMODULES", array('Parrot', 'MetarInfo'));
-define("SVXREFLECTORS", array("ReflectorLogicFLW", "ReflectorLogicOE9XFP", "ReflectorLogicBH", "ReflectorLogicBM262"));
+define("SVXREFLECTORS", array("ReflectorLogicFLW", "ReflectorLogicOE9XFP", "ReflectorLogicBH", "ReflectorLogicBM262","ReflectorLogicTHU"));
 define("TIMEZONE", "Europe/Berlin");
-define("REFRESHAFTER", "10");
+define("REFRESHAFTER", "60");
 define("SHOWPROGRESSBARS", "on");
 define("SHOWOLDMHEARD", "60");
 define("TEMPERATUREALERT", "on");
@@ -54,7 +54,15 @@ $reflector_config= array(
 			"link_is_active" => "0",
 			"is_connected"   => "0",
 			"activate_key"  => "99",
-			"tg_choices"   => array(73,75,263))
+			"tg_choices"   => array(73,75,263)),
+			
+	"REF5" => array("config_name" => "ReflectorLogicTHU",
+			"display_name" => "Analog Thüringen Link",
+			"link_name"   => "LinkToTHU",
+			"link_is_active" => "0",
+			"is_connected"   => "0",
+			"activate_key"  => "98",
+			"tg_choices"   => array(8,20,66,89,91,262,264,777,9999))
 		);
 
 

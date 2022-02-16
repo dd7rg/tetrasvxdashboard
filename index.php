@@ -143,6 +143,9 @@ include "version.php";
             <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="sysinfo.php">SysInfo</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="log.php">Log</a>
           </li>
 	   <li class="nav-item">
@@ -162,14 +165,6 @@ include "version.php";
 
   <!-- Page Content -->
   <?php checkSetup(); ?>
-  <div class="container-fluid">
-    <div class="row">
-      <?php
-        include "include/sysinfo.php";
-        include "include/disk.php";
-      ?>
-    </div>
-  </div>
 
   <div class="container-fluid">
     <div class="row">
