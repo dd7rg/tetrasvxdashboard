@@ -5,7 +5,7 @@
 
 For installation see : https://github.com/ea2cq/tetrasvxdashboard 
 
-Installation is exacly like above, but with this repo: https://gitub.com/dd7rg/tetrasvxdashboard
+Installation is exacly like above, but with this repo: https://github.com/dd7rg/tetrasvxdashboard
 
 This dashboard will be modified to use with multiple reflectors
 
